@@ -109,36 +109,41 @@ values ('Scrum')
 insert into tb_metodologia (metodo_nome)
 values ('Scrum')
 
+select * from tb_pessoas
+
+select * from tb_tarefa
+
+select * from tb_metodologia
+
+select * from tarefa_participantes
 
 --Exercício 1
 
---select p.id_pessoa, t.id_tarefa from tb_pessoas as p
---left join tb_tarefa as t on p.id_pessoa=t.id_tarefa where id_tarefa is null
+select p.id_pessoa, p.nome, t.id_tarefa from tb_pessoas as p
+left join tb_tarefa as t on p.id_pessoa=t.id_tarefa where id_tarefa is null
 
 
 --Exercício 2
 
---select count (metodo_nome) as Metologolia from tb_metodologia group by titulo order by count(titulo) desc;
+select metodo_nome as Metodologia, count (metodo_nome) as Quantidade from tb_metodologia group by metodo_nome order by count(metodo_nome) desc;
 
 
 --Exercício 3 
 
 --mulheres
---select t.titulo, p.sexo
---select count(*) as Mulheres from tb_tarefa as t 
---left join tb_pessoas as p on t.id_tarefa = p.id_pessoa where sexo = 'F';
+select count(*) as Mulheres from tb_tarefa as t 
+left join tb_pessoas as p on t.id_tarefa = p.id_pessoa where sexo = 'F';
 
 --homem
---select t.titulo, p.sexo
---select count(*) as Homens from tb_tarefa as t 
---left join tb_pessoas as p on t.id_tarefa = p.id_pessoa where sexo = 'M';
+select count(titulo) as Homens from tb_tarefa as t 
+left join tb_pessoas as p on t.id_tarefa = p.id_pessoa where sexo = 'M';
 
 
 --Exercício 4 - OK
 
---select p.nome, p.id_pessoa, t.id_tarefa, t.prazo_estimado, t.dt_termino, tp.id_pessoa, tp.id_tarefa
---from tb_tarefa as t
---inner join tarefa_participantes as tp on t.id_tarefa=tp.id_tarefa
---inner join tb_pessoas as p on p.id_pessoa=tp.id_pessoa
---where t.dt_termino > t.prazo_estimado
+select p.nome, p.id_pessoa, t.id_tarefa, t.prazo_estimado, t.dt_termino
+from tb_tarefa as t
+inner join tarefa_participantes as tp on t.id_tarefa=tp.id_tarefa
+inner join tb_pessoas as p on p.id_pessoa=tp.id_pessoa
+where t.dt_termino > t.prazo_estimado
 
