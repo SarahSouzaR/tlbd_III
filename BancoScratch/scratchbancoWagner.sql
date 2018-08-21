@@ -117,18 +117,18 @@ select * from tb_metodologia
 
 select * from tarefa_participantes
 
---Exercício 1
+--Exercício 1 - OK
 
 select p.id_pessoa, p.nome, t.id_tarefa from tb_pessoas as p
 left join tb_tarefa as t on p.id_pessoa=t.id_tarefa where id_tarefa is null
 
 
---Exercício 2
+--Exercício 2 - OK
 
 select metodo_nome as Metodologia, count (metodo_nome) as Quantidade from tb_metodologia group by metodo_nome order by count(metodo_nome) desc;
 
 
---Exercício 3 
+--Exercício 3 - OK
 
 --mulheres
 select count(*) as Mulheres from tb_tarefa as t 
